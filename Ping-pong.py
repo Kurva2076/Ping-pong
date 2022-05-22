@@ -62,9 +62,6 @@ while game:
     
     if not(finish):
         window.fill(back)
-        racket1.reset()
-        racket2.reset()
-        ball.reset()
 
         racket1.l_control()
         racket2.r_control()
@@ -75,10 +72,13 @@ while game:
             speed_x *= -1
             speed_y *= 1
         
-        if sprite.collide_rect(racket1, ball) or sprite.collide_rect(racket2, ball):
+        if ball or sprite.collide_rect(racket2, ball):
             speed_x *= -1
             speed_y *= 1
 
+        racket1.reset()
+        racket2.reset()
+        ball.reset()
 
     clock.tick(FPS)
 
